@@ -3,14 +3,14 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Header from "@/components/header"
-import UploadStep from "@/components/upload-step"
-import ReviewStep from "@/components/review-step"
-import MessageStep from "@/components/message-step"
-import ChannelStep from "@/components/channel-step"
-import SuccessStep from "@/components/success-step"
+import UploadStep from "@/components/steps/upload-step"
+import ReviewStep from "@/components/steps/review-step"
+import MessageStep from "@/components/steps/message-step"
+import ChannelStep from "@/components/steps/channel-step"
+import SuccessStep from "@/components/steps/success-step"
 import { Steps } from "@/components/steps-indicator"
-import InvoicesView from "@/components/invoices-view"
-import SettingsView from "@/components/settings-view"
+import InvoicesView from "@/components/views/invoices-view"
+import SettingsView from "@/components/views/settings-view"
 
 export interface Invoice {
   id: string
@@ -22,7 +22,7 @@ export interface Invoice {
 }
 
 export type Channel = "messenger" | "instagram" | null
-export type View = "main" | "invoices" | "settings"
+export type View = "overview" | "invoices" | "settings"
 
 export interface IntegrationStatus {
   messenger: boolean
@@ -30,7 +30,7 @@ export interface IntegrationStatus {
 }
 
 export default function InvoiceSender() {
-  const [currentView, setCurrentView] = useState<View>("main")
+  const [currentView, setCurrentView] = useState<View>("overview")
 
   // Wizard State
   const [currentStep, setCurrentStep] = useState(1)
@@ -91,7 +91,7 @@ export default function InvoiceSender() {
       <Header currentView={currentView} onNavigate={setCurrentView} />
 
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 flex flex-col">
-        {currentView === "main" && (
+        {currentView === "overview" && (
           <div className="flex-1 flex flex-col">
             <div className="mb-10 max-w-3xl mx-auto w-full">
               <Steps currentStep={currentStep} />

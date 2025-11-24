@@ -1,16 +1,21 @@
 "use client"
 
 import type React from "react"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Check, Zap, MessageSquare, Upload, Layout } from "lucide-react"
 import { motion } from "framer-motion"
+import { Modal } from "@/components/ui/modal"
 
 interface LandingPageProps {
   onEnterApp: () => void
 }
 
 export function LandingPage({ onEnterApp }: LandingPageProps) {
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false)
+  const [showTermsModal, setShowTermsModal] = useState(false)
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Header */}
@@ -22,11 +27,11 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
             </div>
             <span className="font-bold text-lg tracking-tight">BulkSender</span>
           </div>
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition-colors">
-              Features
-            </a>
-          </nav>
+          <div className="flex items-center space-x-4">
+            <Button onClick={onEnterApp}>
+              Get Started <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -67,7 +72,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
               className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
             >
               <Button size="lg" className="w-full sm:w-auto text-base px-8 h-12" onClick={onEnterApp}>
-                Start Sending
+                Start Sending Free
               </Button>
               <Button variant="outline" size="lg" className="w-full sm:w-auto text-base px-8 h-12 bg-transparent">
                 View Demo
@@ -187,7 +192,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to automate your invoices?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Save time. Get paid faster. No credit card required.
+              Join thousands of sellers saving time and getting paid faster. No credit card required.
             </p>
             <Button size="lg" className="text-base px-8 h-12" onClick={onEnterApp}>
               Launch Dashboard
@@ -206,18 +211,129 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
             <span className="font-bold text-sm">BulkSender</span>
           </div>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground">
+            <button
+              onClick={() => setShowPrivacyModal(true)}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-foreground">
+            </button>
+            <button
+              onClick={() => setShowTermsModal(true)}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
               Terms of Service
-            </a>
+            </button>
             <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-foreground">
               GitHub
             </a>
           </div>
         </div>
       </footer>
+
+      <Modal isOpen={showPrivacyModal} onClose={() => setShowPrivacyModal(false)} title="Privacy Policy">
+        <div className="space-y-4 max-h-96 overflow-y-auto">
+          <p>
+            <strong>Last Updated: November 2024</strong>
+          </p>
+
+          <div>
+            <h3 className="font-semibold mb-2">1. Introduction</h3>
+            <p className="text-sm text-muted-foreground">
+              BulkSender ("we", "our", or "us") operates this platform. This page informs you of our policies regarding
+              the collection, use, and disclosure of personal data when you use our service.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">2. Information Collection</h3>
+            <p className="text-sm text-muted-foreground">
+              We collect information about how you interact with our platform, including the invoices you upload, the
+              messages you create, and the delivery channels you use. We also collect your account information and
+              connection details for Facebook Messenger and Instagram.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">3. Use of Information</h3>
+            <p className="text-sm text-muted-foreground">
+              Your data is used to provide and improve our services, send your invoices through the selected channels,
+              and communicate with you about your account. We do not sell your personal information to third parties.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">4. Data Security</h3>
+            <p className="text-sm text-muted-foreground">
+              We implement industry-standard security measures to protect your information. However, no method of
+              transmission over the Internet is 100% secure, and we cannot guarantee absolute security.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">5. Contact Us</h3>
+            <p className="text-sm text-muted-foreground">
+              If you have any questions about this Privacy Policy, please contact us at privacy@bulksender.com
+            </p>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal isOpen={showTermsModal} onClose={() => setShowTermsModal(false)} title="Terms of Service">
+        <div className="space-y-4 max-h-96 overflow-y-auto">
+          <p>
+            <strong>Last Updated: November 2024</strong>
+          </p>
+
+          <div>
+            <h3 className="font-semibold mb-2">1. Agreement to Terms</h3>
+            <p className="text-sm text-muted-foreground">
+              By using BulkSender, you agree to comply with and be bound by these Terms of Service. If you do not agree
+              to abide by the above, please do not use this service.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">2. License to Use</h3>
+            <p className="text-sm text-muted-foreground">
+              We grant you a limited, non-exclusive license to use BulkSender for your business purposes. You may not
+              reproduce, duplicate, copy, sell, resell, or exploit any portion of the service without our express
+              written permission.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">3. User Responsibilities</h3>
+            <p className="text-sm text-muted-foreground">
+              You are responsible for the content of your invoices and messages. You agree not to use BulkSender for any
+              illegal or unauthorized purpose. You must not violate any laws or the rights of others.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">4. Limitation of Liability</h3>
+            <p className="text-sm text-muted-foreground">
+              BulkSender is provided on an "as-is" basis. We are not liable for any indirect, incidental, special,
+              consequential, or punitive damages resulting from your use of or inability to use the service.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">5. Termination</h3>
+            <p className="text-sm text-muted-foreground">
+              We may terminate or suspend your account at any time, without notice or liability, for conduct that we
+              believe violates these Terms of Service or is otherwise harmful to other users.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">6. Changes to Terms</h3>
+            <p className="text-sm text-muted-foreground">
+              We reserve the right to modify these terms at any time. We will notify you of any changes by updating the
+              "Last Updated" date of these Terms of Service.
+            </p>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }

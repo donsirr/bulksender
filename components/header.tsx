@@ -4,8 +4,8 @@ import { Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface HeaderProps {
-  currentView: "main" | "invoices" | "settings"
-  onNavigate: (view: "main" | "invoices" | "settings") => void
+  currentView: "overview" | "invoices" | "settings"
+  onNavigate: (view: "overview" | "invoices" | "settings") => void
 }
 
 export default function Header({ currentView, onNavigate }: HeaderProps) {
@@ -13,7 +13,7 @@ export default function Header({ currentView, onNavigate }: HeaderProps) {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center justify-between px-4 max-w-5xl mx-auto w-full">
         {/* Logo */}
-        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate("main")}>
+        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate("overview")}>
           <div className="h-6 w-6 rounded-md bg-primary flex items-center justify-center shadow-sm">
             <div className="h-3 w-3 rounded-full bg-background" />
           </div>
@@ -23,9 +23,9 @@ export default function Header({ currentView, onNavigate }: HeaderProps) {
         {/* Navigation */}
         <nav className="flex items-center space-x-6 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
           <button
-            onClick={() => onNavigate("main")}
+            onClick={() => onNavigate("overview")}
             className={`transition-colors hover:text-foreground ${
-              currentView === "main" ? "text-foreground" : "text-muted-foreground"
+              currentView === "overview" ? "text-foreground" : "text-muted-foreground"
             }`}
           >
             Dashboard
