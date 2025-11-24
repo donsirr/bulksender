@@ -72,7 +72,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
               className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
             >
               <Button size="lg" className="w-full sm:w-auto text-base px-8 h-12" onClick={onEnterApp}>
-                Start Sending Free
+                Start Sending
               </Button>
               <Button variant="outline" size="lg" className="w-full sm:w-auto text-base px-8 h-12 bg-transparent">
                 View Demo
@@ -192,7 +192,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to automate your invoices?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of sellers saving time and getting paid faster. No credit card required.
+             Save time. Get paid faster. No credit card required.
             </p>
             <Button size="lg" className="text-base px-8 h-12" onClick={onEnterApp}>
               Launch Dashboard
@@ -223,7 +223,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
             >
               Terms of Service
             </button>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-foreground">
+            <a href="https://github.com/donsirr/bulksender" target="_blank" rel="noreferrer" className="hover:text-foreground">
               GitHub
             </a>
           </div>
@@ -233,7 +233,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
       <Modal isOpen={showPrivacyModal} onClose={() => setShowPrivacyModal(false)} title="Privacy Policy">
         <div className="space-y-4 max-h-96 overflow-y-auto">
           <p>
-            <strong>Last Updated: November 2024</strong>
+            <strong>Last Updated: November 2025</strong>
           </p>
 
           <div>
@@ -281,7 +281,7 @@ export function LandingPage({ onEnterApp }: LandingPageProps) {
       <Modal isOpen={showTermsModal} onClose={() => setShowTermsModal(false)} title="Terms of Service">
         <div className="space-y-4 max-h-96 overflow-y-auto">
           <p>
-            <strong>Last Updated: November 2024</strong>
+            <strong>Last Updated: November 2025</strong>
           </p>
 
           <div>
